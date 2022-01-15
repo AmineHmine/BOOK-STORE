@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    error 500
+{% endblock %}
+{% block body %}
+<br><br><br>
+	<div align="center" class="formulaire uk-width-1-2  uk-card uk-card-default uk-card-body uk-align-center " style="margin-bottom:27px">
+		<div class="front uk-margin-top" align="center">
+			<h1>Accès Interdit</h1>
+			<img width="500px" src={{asset('assets/image/error500.png')}}>
+			<p>
+				The requested page is prohibited, please return to the home page or visit other pages
+				<a href={{path('home')}}> click here !</a>
+			</p>
+		</div>
+	</div>
+    <br><br><br>
+{% endblock %}

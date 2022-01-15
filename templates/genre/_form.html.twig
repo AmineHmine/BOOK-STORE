@@ -1,0 +1,10 @@
+{{ form_start(form) }}
+    <table class="uk-table uk-width-1-4 uk-table-justify" >  
+            <tr>
+                <th>NOM</th>
+                <td align="right">{{ form_row(form.nom) }}</td>
+            </tr> 
+    </table>
+    <button class="uk-button uk-button-secondary ">{{ button_label|default('Save') }}</button>
+    <a class="uk-button uk-button-secondary" href="{{ path('genre_index') }}" uk-icon="list" uk-tooltip="back to list"></a>
+{{ form_end(form) }}

@@ -1,0 +1,125 @@
+body{
+    height: 100%;
+    width: 100%;
+    background-color: whitesmoke;
+}
+
+#bg1{
+    background-image: linear-gradient(to bottom, rgba(10, 66, 117, 1),rgba(10, 66, 117, 0.7)), url(image/books.jpg);
+    background-size: cover;
+}
+
+.container{
+    background-color: #ffffff;
+    border-radius: 15px;
+}
+
+.header {
+    color: white;
+    font-size: 100px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.card{
+    background-color: #e3e8ee;
+    border-radius: 20px;
+    border: none;
+    box-shadow: #b3b3ae;
+}
+
+div>svg{
+    background-color: #e3e8ee;
+    border:none;
+    border-radius: 20px;
+}
+.uk-button{
+    background:#0a4275;
+    border-radius: 5px;
+    color: white;
+}
+.my-bg{
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+
+}
+
+
+
+.uk-navbar-nav a{
+    color: rgba(31, 43, 92, 0.9) !important;
+    transition: all ease 500ms;
+}
+.uk-navbar-right a{
+    color: rgb(48, 61, 112) !important;
+    transition: all ease 500ms;
+}
+
+.uk-navbar-nav li :focus{
+    transition: all 500ms ease;
+    color: #3e519e !important;
+}
+
+.uk-navbar-container{
+    background-color: rgba(255, 255, 255, 1)!important;
+}
+
+.formulaire{
+    margin-top:15px;    
+    border-radius: 15px;
+}
+
+.title{
+    padding: 15px;
+    background-color: #0a4275;
+    margin-top: 10px;
+}
+
+.title>h1{
+    margin: 0 auto;
+    color: white;
+    font-size:  6mm;
+    text-align: center;
+}
+
+
+
+/*
+<div class="pagination">
+    <span class="first">
+            <a href="/?page=1">&lt;&lt;</a>
+    </span>
+        
+    <span class="previous">
+            <a rel="prev" href="/?page=1">&lt;</a>
+    </span>
+        
+    <span class="page">
+            <a href="/?page=1">1</a>
+    </span>
+                                                
+    <span class="current">2</span>
+    
+    <span class="page">
+            <a href="/?page=3">3</a>
+    </span>
+    
+    <span class="page">
+            <a href="/?page=4">4</a>
+    </span>
+    
+    <span class="page">
+            <a href="/?page=5">5</a>
+    </span>
+                    
+    <span class="next">
+            <a rel="next" href="/?page=3">&gt;</a>
+    </span>
+        
+    <span class="last">
+            <a href="/?page=7">&gt;&gt;</a>
+    </span>
+
+</div>
+*/

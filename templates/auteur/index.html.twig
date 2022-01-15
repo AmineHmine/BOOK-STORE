@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Auteur index
+{% endblock %}
+
+{% block body %}
+
+	<div align="center" class="formulaire uk-width-3-4  uk-card uk-card-default uk-card-body uk-align-center">
+		<h1 align="center">liste des auteurs</h1>
+		{% if app.user %}
+			{% if app.user.roles[0]=="ROLE_ADMIN"  %}
+				<a href="{{ path('auteur_new') }}" class="uk-button uk-button-secondary">Créer un nouveau auteur</a>
+			{% endif %}
+		{% endif %}
+		<table class="uk-table uk-table-striped uk-margin uk-table-justify">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Nom</th>
+					<th>Prenom</th>
+					<th>Sexe</th>
+					<th>date de naissance</th>
+					<th>Nationalite</th>
+					<th>actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for auteur in auteurs %}
+					<tr>
+						<td>{{ auteur.id }}</td>
+						<td>{{ auteur.nom }}</td>
+						<td>{{ auteur.prenom }}</td>
+						<td>{{ auteur.sexe }}</td>
+						<td>{{ auteur.dateDeNaissance ? auteur.dateDeNaissance|date('d/m/Y') : '' }}</td>
+						<td>{{ auteur.nationalite }}</td>
+						<td>
+						
+									<a href="{{ path('auteur_show', {'id': auteur.id}) }}" uk-icon="expand" uk-tooltip="show"></a>
+							{% if app.user %}
+								{% if app.user.roles[0]=="ROLE_ADMIN"  %}
+									<a href="{{ path('auteur_edit', {'id': auteur.id}) }}" uk-icon="pencil" uk-tooltip="edit"></a>
+								{% endif %}
+							{% endif %}
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="6">no records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		{{knp_pagination_render(auteurs) }}
+	</div>
+
+
+{% endblock %}

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+		<link
+		rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+		{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+		{% block stylesheets %}{% endblock %}
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.9.4/dist/css/uikit.min.css"/>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		{{ encore_entry_link_tags('app') }}
+		<link rel="stylesheet" href="{{asset('assets/style.css')}}"/>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;500;600;700&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+		{% block javascripts %}
+			<script src="https://cdn.jsdelivr.net/npm/uikit@3.9.4/dist/js/uikit.min.js"></script>
+			<script src="https://cdn.jsdelivr.net/npm/uikit@3.9.4/dist/js/uikit-icons.min.js"></script>
+			{{ encore_entry_script_tags('app') }}
+		{% endblock %}
+	</head>
+
+	<body>
+
+		<div data-uk-sticky="animation: uk-animation-slide-top; sel-target: #nav; cls-active: nabs uk-navbar-sticky ; cls-inactive: uk-navbar-transparent uk-light; top: 200">
+
+			<nav id="nav" class="uk-navbar-container uk-visible@m" uk-navbar="offset:0;mode:click">
+
+				<div class="uk-navbar-left">
+
+					<ul class="uk-navbar-nav uk-margin-left">
+						<li>
+							<a href="{{ path('home')}}"><img class="uk-padding-small" width="250px" src="{{asset('assets//image/nav-logo1.png')}}"/></a>
+						</li>
+					</ul>
+				</div>
+				<div class="uk-navbar-center">
+
+					<ul class="uk-navbar-nav uk-margin-left">
+						<li>
+							<a href="{{ path('auteur_index')}}">Auteurs</a>
+						</li>
+						<li>
+							<a href="{{ path('livre_index')}}">Livres</a>
+						</li>
+						<li>
+							<a href="{{ path('genre_index')}}">Genres</a>
+						</li>
+					</ul>
+				</div>
+				<div
+					class="uk-navbar-right uk-margin-right">
+					<!-- Guest mode -->
+					<ul class="uk-navbar-nav">
+						{% if app.user  %}
+							{% if app.user.roles[0]=="ROLE_ADMIN"  %}
+								<li>
+									<a href="{{ path('home')}}">ADMIN</a>
+								</li>
+							{% endif %}
+							<li>
+								<a href={{path('app_logout')}}>
+									<i class="fas fa-sign-out-alt"></i>
+									LogOut</a>
+							</li>
+						{% endif %}
+						{% if not app.user %}
+							<li>
+								<a href="{{ path('app_login')}}">login</a>
+							</li>
+							<li>
+								<a href="{{ path('app_register')}}">sign in</a>
+							</li>
+						{% endif %}
+
+
+					</ul>
+					<!-- connected user -->
+					<!-- <ul class="uk-navbar-nav">
+											<li><a href="#">LogOUT</a></li>
+											<li class="uk-active">
+												<a href="#">
+													<strong>Amine Hmine</strong> &nbsp;
+													<div class="wrapp">
+														<div id="avatar"><img width="40px" height="40px" src="./assets/users/user_1_avatar.JPG"/></div>
+														<div id="connected">
+														</div>
+													</div>
+												</a>
+											</li>
+										</ul> -->
+
+				</div>
+
+			</nav>
+		</div>
+		<div id="all">
+			{% block body %}
+			
+			{% endblock %}
+		</div>
+		<section
+			class="">
+			<!-- Footer -->
+			<footer 
+				class="text-center text-white" style="background-color: #0a4275;">
+				<!-- Grid container -->
+				<div
+					class="p-4 pb-0">
+					<!-- Section: CTA -->
+					<section class="">
+						<p class="d-flex justify-content-center align-items-center">
+							<p class="me-3">Register</span> 
+							<a href="{{ path('app_register')}}">
+							<button type="button" class="btn btn-outline-light btn-rounded">
+								sign up
+							</button>
+							</a>
+						</p>
+					</section>
+					<!-- Section: CTA -->
+				</div>
+				<!-- Grid container -->
+
+				<!-- Copyright -->
+				<div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+					© 2022 Copyright:
+					<a class="text-white" href="{{ path('home')}}">BOOK STORE</a>
+				</div>
+				<!-- Copyright -->
+			</footer>
+			<!-- Footer -->
+		</section>
+	</body>
+</html>

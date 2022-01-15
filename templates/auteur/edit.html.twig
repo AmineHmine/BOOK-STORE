@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Auteur{% endblock %}
+
+{% block body %}
+    <br>
+    <div align="center" class="formulaire uk-width-1-2  uk-card uk-card-default uk-card-body uk-align-center" style="margin-bottom:38px">
+        <h1>Edit Auteur</h1>
+        {{ include('auteur/_form.html.twig', {'button_label': 'Update'}) }}
+        {{ include('auteur/_delete_form.html.twig') }}
+    </div>
+    
+{% endblock %}

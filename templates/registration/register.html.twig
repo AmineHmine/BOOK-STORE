@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register
+{% endblock %}
+
+{% block body %}
+	<br><br><br><br> 
+		<br><br>
+	<div align="center" class="formulaire uk-width-1-3  uk-card uk-card-default uk-card-body uk-align-center" style="margin-bottom:52px">
+
+
+		<form method="post">
+			{% if app.user %}
+				<div class="uk-margin">
+					You are logged in as
+					{{ app.user.email }},
+					<a class="uk-button uk-button-secondary" href="{{ path('app_logout') }}">Logout</a>
+				</div>
+			{% endif %}
+			{% if not app.user %}
+				<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+				{{ form_start(registrationForm) }}
+				{{ form_row(registrationForm.email) }}
+				{{ form_row(registrationForm.plainPassword, {
+        }) }}
+        <p>you should be login with this email and password </p>
+				{{ form_row(registrationForm.agreeTerms) }}
+
+				<button type="submit" class="btn">Register</button>
+				{{ form_end(registrationForm) }}
+			</form>
+		{% endif %}
+	</div>
+<br><br><br><br> 
+		<br><br>
+{% endblock %}

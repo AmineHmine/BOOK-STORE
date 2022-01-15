@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Genre index
+{% endblock %}
+
+{% block body %}
+
+	<div align="center" class="formulaire uk-width-3-4  uk-card uk-card-default uk-card-body uk-align-center">
+		<h1 align="center">Genre index</h1>
+		{% if app.user %}
+			{% if app.user.roles[0]=="ROLE_ADMIN"  %}
+				<a href="{{ path('genre_new') }}" class="uk-button uk-button-secondary">Créer un nouveau genre</a>
+			{% endif %}
+		{% endif %}
+		<table class="uk-table uk-table-striped uk-margin ">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Nom</th>
+					<th class="float-right">actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for genre in genres %}
+					<tr>
+						<td>{{ genre.id }}</td>
+						<td>{{ genre.nom }}</td>
+						<td class="float-right">
+							<a href="{{ path('genre_show', {'id': genre.id}) }}"uk-icon="expand" uk-tooltip="show"></a>
+							{% if app.user %}
+								{% if app.user.roles[0]=="ROLE_ADMIN"  %}
+									<a href="{{ path('genre_edit', {'id': genre.id}) }}" uk-icon="pencil" uk-tooltip="edit"></a>
+								{% endif %}
+							{% endif %}
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="6">no records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+
+
+{% endblock %}
